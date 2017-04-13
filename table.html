@@ -19,7 +19,7 @@
 
             nav {background-color: powderblue;}
             h1 {color: black; margin-top: -5px;}
-
+            /* div的横向滚动条 */
             #div1 {overflow-x:auto;overflow-y:hidden;}
             .button {text-align: center; height: 40px; width: 70px; border-radius: 25px 5px 25px 5px; background-color: greenyellow;}
         </style>
@@ -38,19 +38,17 @@
                 for (var j =1; j <= linenum; j++) {
                     data += "<tr> ";
                     for (var i = 1; i <= columnnum; i++) {
+                        //随机生成汉字
                         eval( "var word=" +  '"\\u' + (Math.round(Math.random() * 20901) + 19968).toString(16)+'"');
                         data += "<td>" + word + "<br/>" +"(第" + i + " 列，第 " + j + " 行) " + "</td> ";
                     }
                     data += "</tr> ";
                 }
-                
                 data += "</table>";
-
                 document.getElementById("table1").innerHTML = data;
             }
-
-
         </script>
+        
     </head>
     <body>
         <div id="table">
