@@ -12,9 +12,9 @@
 
         <!-- 层叠样式表 -->
         <style>
-            table {border-collapse: collapse; margin: auto; margin-top: 60px;}
-            table,td,th {border: 2px solid powderblue;  padding: 15px;}
-            th {height: 50px;}
+            table {border-collapse: collapse; margin-top: 60px;}
+            table,td {border: 2px solid powderblue;}
+            td {height: 30px; width: 200px; padding: 20px;}
             tr td:hover {background-color: gray;}
 
             nav {background-color: powderblue;}
@@ -39,7 +39,7 @@
                     data += "<tr> ";
                     for (var i = 1; i <= columnnum; i++) {
                         eval( "var word=" +  '"\\u' + (Math.round(Math.random() * 20901) + 19968).toString(16)+'"');
-                        data += "<td>" + word + "</td> ";
+                        data += "<td>" + word + "<br/>" +"(第" + i + " 列，第 " + j + " 行) " + "</td> ";
                     }
                     data += "</tr> ";
                 }
