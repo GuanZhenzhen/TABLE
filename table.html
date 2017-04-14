@@ -1,71 +1,112 @@
 <!DOCTYPE html>
-    <head>
-        <title>练习项目</title>
-        <meta charset="utf-8">
+<head>
+    <title>练习项目</title>
+    <meta charset="utf-8">
 
-        <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-        <!-- 层叠样式表 -->
-        <style>
-            table {border-collapse: collapse; margin-top: 60px;}
-            table,td {border: 2px solid powderblue;}
-            td {height: 30px; width: 200px; padding: 20px;}
-            tr td:hover {background-color: gray;}
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
-            nav {background-color: powderblue;}
-            h1 {color: black; margin-top: -5px;}
-            /* div的横向滚动条 */
-            #div1 {overflow-x:auto;overflow-y:hidden;}
-            .button {text-align: center; height: 40px; width: 70px; border-radius: 25px 5px 25px 5px; background-color: greenyellow;}
-        </style>
-
-        <!-- JS事件 -->
-        <script type="text/javascript">
-            function table() {
-                var line = Math.random() * 40 + 1;
-                var linenum = parseInt(line + 10, 10);  //获得表格行数
-                var column = Math.random() * 400 +1;
-                var columnnum = parseInt(column +100, 10);  //获得表格列数
-                // alert(linenum);
-                // alert(columnnum);
-                var data="";
-                data += "<table > ";
-                for (var j =1; j <= linenum; j++) {
-                    data += "<tr> ";
-                    for (var i = 1; i <= columnnum; i++) {
-                        //随机生成汉字
-                        eval( "var word=" +  '"\\u' + (Math.round(Math.random() * 20901) + 19968).toString(16)+'"');
-                        data += "<td>" + word + "<br/>" +"(第" + i + " 列，第 " + j + " 行) " + "</td> ";
-                    }
-                    data += "</tr> ";
-                }
-                data += "</table>";
-                document.getElementById("table1").innerHTML = data;
-            }
-        </script>
+    <!-- 层叠样式表 -->
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 60px;
+        }
         
-    </head>
-    <body>
-        <div id="table">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
+        table,
+        td {
+            border: 2px solid powderblue;
+        }
+        
+        td {
+            height: 30px;
+            width: 200px;
+            padding: 20px;
+        }
+        
+        tr td:hover {
+            background-color: gray;
+        }
+        
+        nav {
+            background-color: powderblue;
+        }
+        
+        h1 {
+            color: black;
+            margin-top: -5px;
+        }
+        /* div的横向滚动条 */
+        
+        #div1 {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        
+        .button {
+            text-align: center;
+            height: 40px;
+            width: 70px;
+            border-radius: 25px 5px 25px 5px;
+            background-color: greenyellow;
+        }
+    </style>
+
+    <!-- JS事件 -->
+    <script type="text/javascript">
+        function table() {
+
+            var line = Math.random() * 40 + 1;
+            var linenum = Math.floor(line + 10);  //获得表格行数
+            var column = Math.random() * 400 + 1;
+            var columnnum = Math.floor(column + 100);  //获得表格列数
+            // alert(linenum);
+            // alert(columnnum);
+            $("#table1").empty();
+            var data = $("<table border=\" 1 \">");
+            data.appendTo($("#table1"));
+            for (var j = 1; j <= linenum; j++) {
+                var tr = $("<tr></tr>");
+                tr.appendTo(data);
+                for (var i = 1; i <= columnnum; i++) {
+                    var td = $("<td>" + "第" + j + "行，第" + i + "列" + "</td>");
+                    td.appendTo(tr);
+                }
+            }
+
+            $("#table1").append("</table>");
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="table">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
                     <a class="navbar-brand" href="#">
                         <h1>动态随机生成表格</h1>
                     </a>
-                    </div>
                 </div>
-            </nav>
-            <div id="div1">
-                <div id="table1"></div>
             </div>
-            <br/><br/><br/><br/>
-            <input name="" type="button" value="生成" class="button" onclick="table()"/>
+        </nav>
+        <div id="div1">
+            <div id="table1"></div>
         </div>
-    </body>
+        <br/><br/><br/><br/>
+        <input name="" type="button" value="生成" class="button" onclick="table()" />
+    </div>
+</body>
+
 </html>
